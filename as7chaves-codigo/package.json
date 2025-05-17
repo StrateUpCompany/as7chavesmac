@@ -1,0 +1,57 @@
+{
+  "name": "as7chaves-electron",
+  "version": "1.0.0",
+  "description": "Sistema de funis de vendas e marketing digital - As 7 Chaves",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "concurrently \"cd renderer && npm run dev\" \"cross-env NODE_ENV=development electron .\"",
+    "build": "cd renderer && npm run build",
+    "package": "electron-builder build --mac",
+    "package:mac": "electron-builder build --mac",
+    "postinstall": "electron-builder install-app-deps"
+  },
+  "build": {
+    "appId": "com.as7chaves.app",
+    "productName": "As 7 Chaves",
+    "mac": {
+      "category": "public.app-category.business",
+      "target": "dmg",
+      "icon": "build/icon.icns"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "backend.js",
+      "database.js",
+      "ipc-handlers.js",
+      "renderer/out/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    }
+  },
+  "keywords": [
+    "funil",
+    "vendas",
+    "marketing",
+    "electron",
+    "nextjs"
+  ],
+  "author": "As 7 Chaves",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "cross-env": "^7.0.3",
+    "electron": "^25.0.0",
+    "electron-builder": "^24.4.0"
+  },
+  "dependencies": {
+    "electron-store": "^8.1.0",
+    "sqlite3": "^5.1.6",
+    "sqlite": "^4.2.1",
+    "uuid": "^9.0.0"
+  }
+}
